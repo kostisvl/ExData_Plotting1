@@ -6,3 +6,10 @@ colnames(data)<-c("Date", "Time", "Global_active_power","Global_reactive_power",
 ##Create timestamp
 timestamp<-strptime(paste(data$Date, data$Time), format="%d/%m/%Y %H:%M:%S")
 as.date<-as.Date(paste(data$Date), format="%d/%m/%Y")
+##Create plot_3
+png(filename = "plot3.png", width = 480, height = 480, bg = "white",  res = NA)
+with(data, plot(timestamp,Sub_metering_1, type="l",col="black", xlab=" ", ylab= "Energy sub metering"))
+lines(timestamp, data$Sub_metering_2, col="red")
+lines(timestamp, data$Sub_metering_3, col="blue")
+legend("topright", lty="solid", col = c("black","red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3"))
+dev.off()
