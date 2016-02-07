@@ -9,4 +9,4 @@ as.date<-as.Date(paste(data$Date), format="%d/%m/%Y")
 ##Histogram global Active power
 png(filename = "plot1.png", width = 480, height = 480, bg = "white",  res = NA)
 with(data,hist(data$Global_active_power, col="red", main= "Global active power", xlab= ("Global active Power (kilowatts)")))
-dev.off(
+dev.off()
