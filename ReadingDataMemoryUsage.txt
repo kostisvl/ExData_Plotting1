@@ -1,0 +1,17 @@
+##I estimate the memory usage-time that will need to read the whole dataset (2,075,259 rows) in R using the read.csv function
+system.time(data<-read.csv(file = "household_power_consumption.txt", sep = ";", header=TRUE,na.strings=c("?"), stringsAsFactors = FALSE))
+## I estimate the memory usage-time that will need to read the datafor 1-2-2007 & 2-2-2007
+system.time(data<-read.csv(file = "household_power_consumption.txt", sep = ";",skip= 66636, nrows=2880 , header=TRUE,na.strings=c("?"), stringsAsFactors = FALSE))
+##Reading dataset in R
+##Specifying column names
+data<-read.csv(file = "household_power_consumption.txt", sep = ";",skip= 66636, nrows=2880 , header=TRUE,na.strings=c("?"), stringsAsFactors = FALSE)
+colnames(data)<-c("Date", "Time", "Global_active_power","Global_reactive_power", "Voltage", "Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3")
+##Explore dataset
+head(data)
+tail(data)
+str(data)
+summary(data)
+##Set as.Date
+##Create timestamp
+timestamp<-strptime(paste(data$Date, data$Time), format="%d/%m/%Y %H:%M:%S")
+as.date<-as.Date(paste(data$Date), format="%d/%m/%Y")
