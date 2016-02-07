@@ -8,9 +8,54 @@ data<-read.csv(file = "household_power_consumption.txt", sep = ";",skip= 66636, 
 colnames(data)<-c("Date", "Time", "Global_active_power","Global_reactive_power", "Voltage", "Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3")
 ##Explore dataset
 head(data)
+Date     Time Global_active_power Global_reactive_power Voltage Global_intensity Sub_metering_1 Sub_metering_2 Sub_metering_3
+1 1/2/2007 00:00:00               0.326                 0.128  243.15              1.4              0              0              0
+2 1/2/2007 00:01:00               0.326                 0.130  243.32              1.4              0              0              0
+3 1/2/2007 00:02:00               0.324                 0.132  243.51              1.4              0              0              0
+4 1/2/2007 00:03:00               0.324                 0.134  243.90              1.4              0              0              0
+5 1/2/2007 00:04:00               0.322                 0.130  243.16              1.4              0              0              0
+6 1/2/2007 00:05:00               0.320                 0.126  242.29              1.4              0              0              0
 tail(data)
+ate     Time Global_active_power Global_reactive_power Voltage Global_intensity Sub_metering_1 Sub_metering_2 Sub_metering_3
+2875 2/2/2007 23:54:00               3.696                 0.226  240.71             15.2              0              1             17
+2876 2/2/2007 23:55:00               3.696                 0.226  240.90             15.2              0              1             18
+2877 2/2/2007 23:56:00               3.698                 0.226  241.02             15.2              0              2             18
+2878 2/2/2007 23:57:00               3.684                 0.224  240.48             15.2              0              1             18
+2879 2/2/2007 23:58:00               3.658                 0.220  239.61             15.2              0              1             17
+2880 2/2/2007 23:59:00               3.680                 0.224  240.37             15.2              0              2             18
+
 str(data)
+'data.frame':	2880 obs. of  9 variables:
+ $ Date                 : chr  "1/2/2007" "1/2/2007" "1/2/2007" "1/2/2007" ...
+ $ Time                 : chr  "00:00:00" "00:01:00" "00:02:00" "00:03:00" ...
+ $ Global_active_power  : num  0.326 0.326 0.324 0.324 0.322 0.32 0.32 0.32 0.32 0.236 ...
+ $ Global_reactive_power: num  0.128 0.13 0.132 0.134 0.13 0.126 0.126 0.126 0.128 0 ...
+ $ Voltage              : num  243 243 244 244 243 ...
+ $ Global_intensity     : num  1.4 1.4 1.4 1.4 1.4 1.4 1.4 1.4 1.4 1 ...
+ $ Sub_metering_1       : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ Sub_metering_2       : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ Sub_metering_3       : num  0 0 0 0 0 0 0 0 0 0 ...
+
 summary(data)
+
+ Date               Time           Global_active_power Global_reactive_power    Voltage      Global_intensity Sub_metering_1   
+ Length:2880        Length:2880        Min.   :0.220       Min.   :0.0000        Min.   :233.1   Min.   : 1.000   Min.   : 0.0000  
+ Class :character   Class :character   1st Qu.:0.320       1st Qu.:0.0000        1st Qu.:238.4   1st Qu.: 1.400   1st Qu.: 0.0000  
+ Mode  :character   Mode  :character   Median :1.060       Median :0.1040        Median :240.6   Median : 4.600   Median : 0.0000  
+                                       Mean   :1.213       Mean   :0.1006        Mean   :240.4   Mean   : 5.102   Mean   : 0.4062  
+                                       3rd Qu.:1.688       3rd Qu.:0.1440        3rd Qu.:242.4   3rd Qu.: 7.000   3rd Qu.: 0.0000  
+                                       Max.   :7.482       Max.   :0.5000        Max.   :246.6   Max.   :32.000   Max.   :38.0000  
+ Sub_metering_2   Sub_metering_3  
+ Min.   :0.0000   Min.   : 0.000  
+ 1st Qu.:0.0000   1st Qu.: 0.000  
+ Median :0.0000   Median : 0.000  
+ Mean   :0.2576   Mean   : 8.501  
+ 3rd Qu.:0.0000   3rd Qu.:17.000  
+ Max.   :2.0000   Max.   :19.000  
+
+
+
+
 ##Set as.Date
 ##Create timestamp
 timestamp<-strptime(paste(data$Date, data$Time), format="%d/%m/%Y %H:%M:%S")
